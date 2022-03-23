@@ -46,10 +46,10 @@
                         {% for i in apidata %}
                         <tr>
                             <td><h5 style="color: rgb(0, 255, 229);">{{i.name}}</h5></td>
-                            <td>{{i.symbol}}</td>
-                            <td class="text-center"><img src="{{i.image}}" width="80"></td>
-                            <td style="color:greenyellow;">{{i.current_price}}</td>
-                            <td style="color:rgb(73, 73, 242);">{{i.market_cap}}</td>
+                            <td class="text-white"><span class="my-auto">{{i.symbol}}</span></td>
+                            <td class="text-center"><img src="{{i.image}}" width="50"></td>
+                            <td style="color:greenyellow;"><span class="my-auto">{{i.current_price}}</span></td>
+                            <td style="color:rgb(73, 73, 242);"><span class="my-auto">{{i.market_cap}}</span></td>
                         </tr>
                         {% endfor %}
 
