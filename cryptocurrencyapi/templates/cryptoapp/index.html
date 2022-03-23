@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
+    <title>Crypto Django API</title>
+</head>
+
+<body class="bg-dark text-white">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="https://github.com/kiarashfz/" target="_blank">KiarashFz</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form class="d-flex ms-auto">
+                    <input class="form-control me-2" type="search" placeholder="Search Crypto" aria-label="Search" id="myInput">
+
+                </form>
+            </div>
+        </div>
+    </nav>
+    <section>
+        <div class="container py-5">
+            <div class="table-responsive text-white">
+                <table class="table table-striped text-center table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-danger">Name</th>
+                            <th class="text-danger">Symbol</th>
+                            <th class="text-danger">Image</th>
+                            <th class="text-danger">Current Price</th>
+                            <th class="text-danger">Market Capital</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myTable">
+                        {% for i in apidata %}
+                        <tr>
+                            <td><h5 style="color: rgb(0, 255, 229);">{{i.name}}</h5></td>
+                            <td>{{i.symbol}}</td>
+                            <td class="text-center"><img src="{{i.image}}" width="80"></td>
+                            <td style="color:greenyellow;">{{i.current_price}}</td>
+                            <td style="color:rgb(73, 73, 242);">{{i.market_cap}}</td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <footer class="fixed-bottom py-2 bg-dark">
+        <p class="text-white text-center mb-0">Developed by KiarashFz with <span style="color: red;">❤️</span> </p>
+    </footer>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+        crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
